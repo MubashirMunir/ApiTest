@@ -24,22 +24,23 @@ class ApiDataView extends StatelessWidget {
           Expanded(
             child: FutureBuilder(
                 future: getPosts(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
+                builder: (context, s) {
+                  if (!s.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(
                         color: Colors.black,
                       ),
                     );
                   } else {
-                    final List<Articles> articles = snapshot.data!;
+                     final articles = s.data!;
                     return ListView.builder(
                         itemCount: articles.length,
                         itemBuilder: (context, index) {
                           return InkWell(onTap:()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductView(
-                             image: articles[index].urlToImage,
-                              title: articles[index].title.toString(),
-                            name:articles[index].author.toString(),))),
+                             image: s.data![index].urlToImage,
+                              title:s.data![index].title.toString(),
+                            name:articles[index].author.toString(),
+                            desc:articles[index].description.toString()))),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 45.0),
                               child: Column(

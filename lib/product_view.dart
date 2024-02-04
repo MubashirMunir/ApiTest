@@ -4,8 +4,10 @@ class ProductView extends StatelessWidget {
 
    ProductView({super.key, required this.title,
      required this.image,
+     required this.desc,
      required this.name,});
   final String title;
+  final String desc;
   final String image;
   final String name;
   @override
@@ -35,7 +37,7 @@ class ProductView extends StatelessWidget {
               children: [
              Text(name.toString(),style: const TextStyle(fontWeight: FontWeight.bold),),
 
-              Text(title.toString())
+              Text(desc.toString())
             ],),
           ),
 
