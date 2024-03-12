@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/Home.dart';
+
+import 'place.dart';
 
  main() {
    runApp( const MyApp());
@@ -8,11 +9,11 @@ import 'package:untitled1/Home.dart';
    // List a=[0,0,0,1,0,0,0,0,8,9,1];
   // int max=a[0];
   // int count =0;
-  // for(int i =0;i<a.length;i++){
-  //   if(a[i]!=0){
-  //      count=0;
+  // for(int i =0;i<=a.length-1;i++){
+  //   if(a[i]=0){
+  //      count++;
   //   }
-  //   else{count++;}
+  //
   // }
   // print(count);
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ApiDataView(),
+      home: const place(),
 
     );
   }

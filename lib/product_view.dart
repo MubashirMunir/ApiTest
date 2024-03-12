@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProductView extends StatelessWidget {
 
-   ProductView({super.key, required this.title,
+   const ProductView({super.key, required this.title,
      required this.image,
      required this.desc,
      required this.name,});
@@ -19,7 +19,7 @@ class ProductView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-    Container(
+    SizedBox(
     height: 200,
     width: 200,
     // decoration: BoxDecoration(

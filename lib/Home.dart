@@ -6,14 +6,19 @@ import 'package:untitled1/product_view.dart';
 import 'api_url.dart';
 class ApiDataView extends StatelessWidget {
 
-  const ApiDataView({super.key,});
 
   Future<List<Articles>> getPosts() async {
-     api obj=api();
-    final response = await http.get(Uri.parse(obj.baseUrl));
+     Api api=Api();
+    final response = await http.get(Uri.parse(api.baseUrl));
     var data = jsonDecode(response.body.toString());
+    if(response.statusCode ==200){
+      for(Map<String ,dynamic >files in data ){
+
+      }
+    }
     return ApiModeule.fromJson(data).articles! ;
   }
+    List<Articles> list = [];
      @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,22 +29,22 @@ class ApiDataView extends StatelessWidget {
           Expanded(
             child: FutureBuilder(
                 future: getPosts(),
-                builder: (context, s) {
-                  if (!s.hasData) {
+                builder: (context, listOfData) {
+                  if (!listOfData.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(
                         color: Colors.black,
                       ),
                     );
                   } else {
-                     final articles = s.data!;
+                     final articles = listOfData.data!;
                     return ListView.builder(
                         itemCount: articles.length,
                         itemBuilder: (context, index) {
                           return InkWell(onTap:()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductView(
-                             image: s.data![index].urlToImage,
-                              title:s.data![index].title.toString(),
-                            name:articles[index].author.toString(),
+                             image: listOfData.data![index].urlToImage,
+                              title:listOfData.data![index].title.toString(),
+                            name:listOfData.data![index].author.toString(),
                             desc:articles[index].description.toString()))),
                             child: Padding(
                               padding: const EdgeInsets.only(left: 45.0),
